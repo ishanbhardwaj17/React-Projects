@@ -31,7 +31,7 @@ const Navbar = () => {
             </Link>
 
             <Link
-              to="/checkout"
+              to="/cart"
               className="relative text-gray-400 font-medium
                          hover:text-gray-100 transition duration-300
                          after:content-[''] after:absolute after:left-0 after:-bottom-1

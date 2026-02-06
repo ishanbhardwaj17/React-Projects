@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProductById } from "../data/products";
+import { useCart } from "../context/CartContext";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -53,8 +55,9 @@ const ProductDetails = () => {
 
           <div className="flex gap-4">
             <button
+              onClick={() => addToCart(product.id)}
               className="px-6 py-3 bg-gray-100 text-gray-950 rounded-lg
-                         hover:bg-white transition font-medium"
+                         hover:bg-white transition font-medium cursor-pointer"
             >
               Add to Cart
             </button>
@@ -63,7 +66,7 @@ const ProductDetails = () => {
               onClick={() => navigate(-1)}
               className="px-6 py-3 border border-gray-700 rounded-lg
                          text-gray-300 hover:text-white hover:border-gray-500
-                         transition"
+                         transition cursor-pointer"
             >
               Go Back
             </button>
